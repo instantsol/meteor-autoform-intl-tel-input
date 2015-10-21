@@ -4,21 +4,21 @@ AutoForm.addInputType("intlTelInput", {
     //will convert to display value later after set / extend opts
     var tpl = Template.instance();
     console.log("DELETEME: valueIn?? 2", tpl.data.name);
-    $("#mobileNumber"+tpl.data.name).intlTelInput("setNumber", val);
+    console.log("DELETEME: valueIn val ", val);
+    Session.set(tpl.data.name, val)
+    // $("#mobileNumber"+tpl.data.name).intlTelInput("setNumber", val);
     return val;
   },
   valueOut: function() {
     console.log("DELETEME: valueOut1 ?? ", this);
-    var tpl = Template.instance();
-    var phoneNumber = $(this.context).intlTelInput("getNumber");
+    console.log("DELETEME: Template instance?? ", this.context.getAttribute('id'));
+    var phoneNumber = $('#'+this.context.getAttribute('id')).intlTelInput("getNumber");
     console.log("DELETEME: valueOut??", phoneNumber);
     console.log("DELETEME: valueOut??", this);
     return phoneNumber;
   }
 });
 
-
-// Write your package code here!
 
 Template.afIntlTelInput.helpers({
     name: function(){
@@ -51,7 +51,11 @@ Template.afIntlTelInput.onRendered(function(){
         defaultCountry: "auto",
         numberType:  "MOBILE",
         preferredCountries: ["br"],
-        utilsScript: "js/utils.js",
+        utilsScript: "/js/utils.js",
         autoFormat: true,
     });
+    var num = Session.get(this.data.name);
+    if (num) {
+        $("#mobileNumber"+this.data.name+" input").intlTelInput("setNumber", num);
+    }
 });
