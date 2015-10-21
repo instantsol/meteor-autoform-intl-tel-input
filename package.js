@@ -24,6 +24,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('instantsol:autoform-intl-tel-input');
+  api.use('instantsolutions:autoform-intl-tel-input');
   api.addFiles('autoform-intl-tel-input-tests.js');
 });
