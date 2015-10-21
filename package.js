@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'instantsol:autoform-intl-tel-input',
+  name: 'instantsolutions:autoform-intl-tel-input',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: 'Int-tel-input custom autoform field.',
@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
   api.use('ecmascript');
   api.use(['minimongo', 'mongo-livedata', 'templating'], 'client');
-  api.use('aldeed:autoform');
+  api.use('aldeed:autoform@5.3.2');
   api.use('blaze');
   api.use('reactive-var');
   api.addFiles('autoform-intl-tel-input.html', ['client']);
